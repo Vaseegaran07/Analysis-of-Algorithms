@@ -1,0 +1,17 @@
+//C++ Program to find sum of digits of a number using recursion
+
+#include <iostream>
+using namespace std;
+int su( int x ) {
+   if( x == 0 ){
+       return 0;
+   }
+   else{
+       return ( x % 10 + su( x / 10) );
+   }
+}
+int main() {
+   int a;
+   cin >> a;
+   cout << su( a );
+}
