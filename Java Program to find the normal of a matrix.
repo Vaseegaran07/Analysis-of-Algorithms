@@ -1,0 +1,15 @@
+import java.util.*;
+class c{
+    public static void main(String args[]){
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int sqr=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                int a=s.nextInt();
+                sqr+=Math.pow(a,2);
+            }
+        }
+        System.out.print((int)Math.sqrt(sqr));
+    }
+}
