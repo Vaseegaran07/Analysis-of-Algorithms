@@ -1,0 +1,41 @@
+//Program to implement Sieve Of Sundaram method to find and print prime numbers
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int> soS(int n){
+    int nNew = (n-2)/2;
+    vector<bool>marked(nNew+1,false);
+    for(int i=1;i<nNew;i++){
+        int j = i;
+        while(i+j+2*i*j<=nNew){
+            marked[i+j+2*i*j]=true;
+            j++;
+        }
+    }
+    vector<int>primes;
+    if(n>2){
+        primes.push_back(2);
+    }
+    for(int i = 1; i<nNew; i++){
+        if(marked[i]==false){
+            primes.push_back(2*i+1);
+        }
+    }
+    return primes;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    if(n<=2){
+        cout<<n;
+    }
+    else{
+        vector<int>primes = soS(n);
+        for(int i:primes){
+            cout<<i<<" ";
+        }
+    }
+    
+}
