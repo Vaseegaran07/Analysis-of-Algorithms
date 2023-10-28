@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void printLPST(string str,int start, int end){
+    for(int i=start;i<end;i++){
+        cout<<str[i];
+    }
+}
+
+void LPST(string str){
+    int maxlength=1,start=0;
+    for(int i=0;i<str.size();i++){//Start of palindrome
+        for(int j=i;j<str.size();j++){//End of palindrome
+            int flag = 1;
+            for(int k=0;k<(j-i)+1/2;k++){//to check symmetry
+                if(str[i+k]!=str[j-k]){
+                    flag=0;
+                }
+            }
+            if(flag==1&&(j-i)+1>maxlength){
+                start=i;
+                maxlength=(j-i)+1;
+            }
+        }
+    }
+    printLPST(str,start,start+maxlength);
+}
+int main(){
+    string str;
+    cin>>str;
+    LPST(str);
+}
+
