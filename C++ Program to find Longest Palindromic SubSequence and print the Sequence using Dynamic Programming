@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string lps(string str){
+    int n = str.length();
+    string dp[n][n];
+    for(int i = 0;i < n;i++){
+        dp[i][i]=str[i];//because of single character
+    }
+    for(int len = 2;len <= n;len++){
+        for(int i = 0;i < n-len+1;i++){
+            int j = i + len - 1;
+            if(str[i]==str[j]&&len==2){
+                dp[i][j]=str[i]+str[j];
+            }
+            else if(str[i]==str[j]){
+                dp[i][j]=str[i]+dp[i+1][j-1]+str[j];
+            }
+            else{
+                dp[i][j]=(dp[i][j-1].length()>dp[i+1][j].length())?dp[i][j-1]:dp[i+1][j];
+            }
+        }
+    }
+    return dp[0][n-1];
+}
+
+
+int main()
+{
+   string str;
+   cin>>str;
+   cout<<lps(str);
+}
