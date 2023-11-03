@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i = 0; i < n; i++){
+        cin>>arr[i];
+    }
+    int P,L,R;
+    cin>>P>>L>>R;
+    L-=1;
+    R-=1;
+    int ans = 1;
+    for(int i = L; i <= R; i++){
+        ans*=arr[i];
+        ans%=P;
+    }
+    cout<<ans;
+}
